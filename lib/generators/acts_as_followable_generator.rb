@@ -13,7 +13,7 @@ class ActsAsFollowableGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/acts_as_followable_migration.rb'
+    migration_template 'follow_migration.rb', 'db/migrate/acts_as_followable_migration.rb'
   end
 
   def create_model

@@ -36,7 +36,24 @@ class User < ApplicationRecord
 end
 ```
 
-好了 先随意撸一下Doc吧 下次有空更新
+```ruby
+  acts_as_followable
+
+  #找出某个模型关注我的所有的对象
+  Article.followers_by_type('User')
+```
+
+```ruby
+  acts_as_follower
+
+  # 关注某个模型的某个对象
+  User.first.follow(Article.first)
+  # 万恶的取关
+  User.first.unfollow(Article.first)
+  # 查看是否关注某个对象
+  User.first.follow?(Article.first)
+```
+以上是目前实现的功能 还有黑名单等功能待实现
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

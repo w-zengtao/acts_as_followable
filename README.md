@@ -36,22 +36,24 @@ class User < ApplicationRecord
 end
 ```
 
+acts_as_followable
 ```ruby
-  acts_as_followable
+acts_as_followable
 
-  #找出某个模型关注我的所有的对象
-  Article.followers_by_type('User')
+#找出某个模型关注我的所有的对象
+Article.followers_by_type('User')
 ```
 
+acts_as_follower
 ```ruby
-  acts_as_follower
+acts_as_follower
 
-  # 关注某个模型的某个对象
-  User.first.follow(Article.first)
-  # 万恶的取关
-  User.first.unfollow(Article.first)
-  # 查看是否关注某个对象
-  User.first.follow?(Article.first)
+# 关注某个模型的某个对象
+User.first.follow(Article.first)
+# 万恶的取关
+User.first.unfollow(Article.first)
+# 查看是否关注某个对象
+User.first.follow?(Article.first)
 ```
 以上是目前实现的功能 还有黑名单等功能待实现
 ## License

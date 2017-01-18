@@ -63,6 +63,10 @@ module ActsAsFollowable
         !get_follow_by_obj(obj).blank?
       end
 
+      def followings(followable_type)
+        return followable_type.constantize.find(self.follows.where(followable_type: followable_type).pluck(:followable_id))
+      end
+
       private
       def get_follow_by_obj(obj)
         self.follows.find_by(followable_id: obj.id, followable_type: class_name(obj))

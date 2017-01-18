@@ -54,6 +54,8 @@ User.first.follow(Article.first)
 User.first.unfollow(Article.first)
 # 查看是否关注某个对象
 User.first.follow?(Article.first)
+# 查看关注模型的所有对象 
+User.first.followings('Article')
 ```
 以上是目前实现的功能 还有黑名单等功能待实现
 ## License

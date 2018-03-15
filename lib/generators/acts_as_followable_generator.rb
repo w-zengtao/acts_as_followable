@@ -14,9 +14,11 @@ class ActsAsFollowableGenerator < Rails::Generators::Base
 
   def create_migration_file
     migration_template 'follow_migration.rb', 'db/migrate/acts_as_followable_migration.rb'
+    migration_template 'unlike_migration.rb', 'db/migrate/acts_as_unlikable_migration.rb'
   end
 
   def create_model
     template "follow.rb", File.join('app/models', "follow.rb")
+    template "unlike.rb", File.join('app/models', "unlike.rb")
   end
 end

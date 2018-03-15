@@ -41,7 +41,7 @@ acts_as_followable
 acts_as_followable
 
 #找出某个模型关注我的所有的对象
-Article.followers_by_type('User')
+Article.followers_by_type(User)
 ```
 
 acts_as_follower
@@ -54,8 +54,8 @@ User.first.follow(Article.first)
 User.first.unfollow(Article.first)
 # 查看是否关注某个对象
 User.first.follow?(Article.first)
-# 查看关注模型的所有对象 
-User.first.followings('Article')
+# 查看关注模型的所有对象
+User.first.followings(Article)
 ```
 以上是目前实现的功能 还有黑名单等功能待实现
 ## License

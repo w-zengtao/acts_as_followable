@@ -22,13 +22,12 @@ module ActsAsFollowable
       end
 
       def followers_by_type(follower_type, options = {})
-        klass = follower_type.constantize
         ids = Follow.
           where('followable_id' => self.id,
                 'followable_type' => class_name(self),
                 'follower_type' => follower_type
         ).pluck('follower_id')
-        return klass.find(ids)
+        return follower_type.find(ids)
       end
     end
   end
@@ -64,7 +63,7 @@ module ActsAsFollowable
       end
 
       def followings(followable_type)
-        return followable_type.constantize.where(id: self.follows.where(followable_type: followable_type).pluck(:followable_id))
+        return followable_type.where(id: self.follows.where(followable_type: followable_type).pluck(:followable_id))
       end
 
       private

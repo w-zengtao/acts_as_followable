@@ -27,7 +27,7 @@ module ActsAsFollowable
                 'followable_type' => class_name(self),
                 'follower_type' => follower_type.name
         ).pluck('follower_id')
-        return follower_type.find(ids)
+        return follower_type.where("id in (?)", ids)
       end
     end
   end

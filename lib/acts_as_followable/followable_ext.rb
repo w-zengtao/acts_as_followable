@@ -4,7 +4,12 @@ module ActsAsFollowable
 
     #  有可能有STI的情况出现
     def class_name(obj)
-      obj.class.superclass != ApplicationRecord ?  obj.class.superclass.name : obj.class.name
+      klass = obj.class
+      loop do
+        break if klass.superclass.name == 'ApplicationRecord'
+        klass = klass.superclass
+      end
+      klass.name
     end
   end
 end
